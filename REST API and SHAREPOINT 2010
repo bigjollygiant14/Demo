@@ -1,0 +1,12 @@
+//REST API and SHAREPOINT 2010
+
+//http://scottcurrier.wordpress.com/2009/12/29/rest-and-sharepoint-2010-quick-start-guide-sample-browser-client-with-jquery/
+
+$.getJSON("https://mysite/reports/_vti_bin/ListData.svc/BaseReporting",function(data){
+       var count = 0;
+       $.each(data.d.results, function(i,result) {
+           var src = result.__metadata.media_src;
+           var title = result.Title;
+           //console.log(title + " " + src);
+       });
+});
