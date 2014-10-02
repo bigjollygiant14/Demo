@@ -1,0 +1,67 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Patriotic Names</title>
+	<!--<script src="../LogicPuzzle/jquery-2.0.3.min.js"></script>-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<style>
+		body {
+			text-align: center;
+			background-color: #CCCCCC;
+		}
+		#userName {
+			width: 400px;
+			margin: 0 0 40px 0;
+			padding: 3px;
+		}
+		h1 {
+			margin: 150px 0 50px 0;
+			color: blue;
+			font-weight: bold;
+			font-size: 2.3em;
+			text-shadow:
+				-1px -1px 0 #000,
+				1px -1px 0 #000,
+				-1px 1px 0 #000,
+				1px 1px 0 #000;
+		}
+		.red {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<h1>
+		Patriotic Name Generator
+	</h1>
+	<input id="userName" type="text"></input>
+	<div id="echo"></div>
+	<script>
+		$( "h1" ).each(function( index ) {
+			var originalText = $( this ).text();
+			var newText = "";
+			for( var i = 0; i < originalText.length; i++) {
+				if (i % 2 === 0)
+					newText += "<span class='red'>" + originalText.charAt(i) + "</span>";  
+				else
+				newText += originalText.charAt(i);
+			}
+			$( this ).html(newText);
+		});
+
+		$('#userName').keyup(function(){
+			word = $('#userName').val().split('');
+			name = '';
+			for (letter in word) {
+				var nameCharacter = word[letter].match(/[A-Z]/gi);
+				if (nameCharacter !== null){
+					name += '<img src="Images/' + nameCharacter + '.gif" alt="Yay!" />';
+				} else if (word[letter] === " "){
+					name += '<br>';
+				}
+			}
+			$('#echo').empty().append(name);
+		});
+	</script>
+</body>
+</html>
